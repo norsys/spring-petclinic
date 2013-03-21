@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="defaultHeader">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>PetClinic :: a Spring Framework demonstration</title>
+    <link
+            href="../../resources/css/bootstrap.min.css"
+            th:href="@{/webjars/bootstrap/2.3.0/css/bootstrap.min.css}"
+            rel="stylesheet"/>
+    <link
+            href="../../resources/css/petclinic.css"
+            th:href="@{/resources/css/petclinic.css}"
+            rel="stylesheet"/>
+    <script
+            src="../../webjars/jquery/1.9.0/jquery.js"
+            th:src="@{/webjars/jquery/1.9.0/jquery.js}"></script>
+    <script src="../../resources/js/jquery-ui-1.9.2.custom.js"
+            th:src="@{/webjars/jquery-ui/1.9.2/js/jquery-ui-1.9.2.custom.js}"></script>
+    <link href="../../resources/css/jquery-ui-1.9.2.custom.css"
+          th:href="@{/webjars/jquery-ui/1.9.2/css/smoothness/jquery-ui-1.9.2.custom.css}"
+          rel="stylesheet" />
+    <!-- Default header from layout -->
+</head>
+</html>
