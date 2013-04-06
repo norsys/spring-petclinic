@@ -20,13 +20,27 @@
         
         <property name="viewResolvers">
         	<list>
-        		 <!-- Default viewClass: JSTL view (JSP with html output) -->
+                <bean class="org.thymeleaf.spring3.view.ThymeleafViewResolver">
+                    <property name="templateEngine">
+                        <bean id="templateEngine" class="org.thymeleaf.spring3.SpringTemplateEngine">
+                            <property name="templateResolver">
+                                <bean class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
+                                    <property name="prefix" value="/WEB-INF/html/"/>
+                                    <property name="suffix" value=".html"/>
+                                    <property name="templateMode" value="HTML5"/>
+                                    <property name="cacheable" value="false"/>
+                                    <property name="characterEncoding" value="UTF-8"/>
+                                </bean>
+                            </property>
+                        </bean>
+                    </property>
+                </bean>
+                <!-- Default viewClass: JSTL view (JSP with html output)
 			    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-			        <!-- Example: a logical view name of 'vets' is mapped to '/WEB-INF/jsp/vets.jsp' -->
 			        <property name="prefix" value="/WEB-INF/jsp/"/>
 			        <property name="suffix" value=".jsp"/>
 			    </bean>
-			
+			    -->
 			    <!-- Used here for 'xml' and 'atom' views  -->
 			    <bean class="org.springframework.web.servlet.view.BeanNameViewResolver"/>
         	</list>
