@@ -16,8 +16,30 @@ PetClinic :: a Spring Framework demonstration
 <!--
 <link rel="stylesheet" href="http://localhost:8080/datatablesController/datatables-bootstrap2.css?id=owners&lastName=%25&c=%2Fowners.html%3FlastName%3D%2525 "/>
 -->
-<table id="owners" class="table table-striped"><thead><tr><th style="width: 150px;">Name</th><th style="width: 200px;">Address</th><th>City</th><th>Telephone</th><th style="width: 100px;">Pets</th></tr></thead><tbody><tr><td><a href="/owners/7.html">Jeff Black</a></td><td>1450 Oak Blvd.</td><td>Monona</td><td>6085555387</td><td>Lucky</td></tr><tr><td><a href="/owners/6.html">Jean Coleman</a></td><td>105 N. Lake St.</td><td>Monona</td><td>6085552654</td><td>Max                            Samantha</td></tr><tr><td><a href="/owners/2.html">Betty Davis</a></td><td>638 Cardinal Ave.</td><td>Sun Prairie</td><td>6085551749</td><td>Basil</td></tr><tr><td><a href="/owners/4.html">Harold Davis</a></td><td>563 Friendly St.</td><td>Windsor</td><td>6085553198</td><td>Iggy</td></tr><tr><td><a href="/owners/8.html">Maria Escobito</a></td><td>345 Maple St.</td><td>Madison</td><td>6085557683</td><td>Mulligan</td></tr><tr><td><a href="/owners/10.html">Carlos Estaban</a></td><td>2335 Independence La.</td><td>Waunakee</td><td>6085555487</td><td>Lucky                            Sly</td></tr><tr><td><a href="/owners/1.html">George Franklin</a></td><td>110 W. Liberty St.</td><td>Madison</td><td>6085551023</td><td>Leo</td></tr><tr><td><a href="/owners/5.html">Peter McTavish</a></td><td>2387 S. Fair Way</td><td>Madison</td><td>6085552765</td><td>George</td></tr><tr><td><a href="/owners/3.html">Eduardo Rodriquez</a></td><td>2693 Commerce St.</td><td>McFarland</td><td>6085558763</td><td>Jewel                            Rosy</td></tr><tr><td><a href="/owners/9.html">David Schroeder</a></td><td>2749 Blackhawk Trail</td><td>Madison</td><td>6085559435</td><td>Freddy</td></tr></tbody><tfoot><tr></tr></tfoot></table>
-<script src="//ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js "></script>
+    <table id="owners" class="table table-striped">
+        <thead>
+        <tr>
+            <th style="width: 150px;">Name</th>
+            <th style="width: 200px;">Address</th>
+            <th>City</th>
+            <th>Telephone</th>
+            <th style="width: 100px;">Pets</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="owner : ${selections}">
+            <td><a href="/owners/7.html" th:href="@{'/owners/' + ${owner.id} + '.html'}" th:text="${owner.firstName + ' ' + owner.lastName}">Jeff Black</a></td>
+            <td th:text="${owner.address}">1450 Oak Blvd.</td>
+            <td th:text="${owner.city}">Monona</td>
+            <td th:text="${owner.telephone}">6085555387</td>
+            <td><span th:each="pet : ${owner.pets}"><span th:text="${pet.name}">Lucky</span>&nbsp;</span></td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr></tr>
+        </tfoot>
+    </table>
+    <script src="//ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js "></script>
 <!--
 <script src="http://localhost:8080/datatablesController/datatables-51808.js?id=owners&t=main&lastName=%25&c=%2Fowners.html%3FlastName%3D%2525 "></script>
 -->
