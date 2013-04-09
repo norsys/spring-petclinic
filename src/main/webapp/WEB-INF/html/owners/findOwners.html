@@ -4,6 +4,9 @@
 PetClinic :: a Spring Framework demonstration
 -->
 <head th:include="common/layout::head">
+    <script src="../../../resources/js/jquery.js"></script>
+    <script src="../../../resources/js/thymol-custom.js"></script>
+    <script src="../../../resources/js/thymol-setup.js"></script>
 </head>
 <body>
 <div class="container">
@@ -13,7 +16,11 @@ PetClinic :: a Spring Framework demonstration
     <h2>Find Owners</h2>
 
     
-    <form id="search-owner-form" class="form-horizontal" action="/owners.html" method="get">
+    <form id="search-owner-form"
+          class="form-horizontal"
+          action="../owners/ownersList.html"
+          th:action="@{/owners.html}"
+          method="get">
         <fieldset>
             <div class="control-group" id="lastName">
                 <label class="control-label">Last name </label>
