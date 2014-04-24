@@ -85,5 +85,4 @@ see here: http://static.springsource.org/spring/docs/current/spring-framework-re
         <filter-name>httpMethodFilter</filter-name>
         <servlet-name>petclinic</servlet-name>
     </filter-mapping>
-
 </web-app>

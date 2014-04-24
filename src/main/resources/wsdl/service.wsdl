@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://schemas.norsys.fr/comment" targetNamespace="http://schemas.norsys.fr/comment">
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://schemas.norsys.fr/comment">
+            <complexType name="CommentsType">
+                <sequence>
+                    <element name="pseudo" type="string" />
+                    <element name="comment" type="string" />
+                    <element name="rate" type="int" />
+                    <element name="date" type="string" />
+                </sequence>
+            </complexType>
+            <element name="findCommentBySiteAndArtifactRequest">
+                <complexType>
+                    <sequence>
+                        <element name="siteId" type="string" />
+                        <element name="artifactId" type="string" />
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="findCommentBySiteAndArtifactResponse">
+                <complexType>
+                    <sequence>
+                        <element name="comment" type="tns:CommentsType" minOccurs="0" maxOccurs="unbounded" />
+                    </sequence>
+                </complexType>
+            </element>
+        </schema>
+    </wsdl:types>
+
+    <wsdl:message name="findCommentBySiteAndArtifactRequest">
+        <wsdl:part element="tns:findCommentBySiteAndArtifactRequest" name="findCommentBySiteAndArtifactRequest">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="findCommentBySiteAndArtifactResponse">
+        <wsdl:part element="tns:findCommentBySiteAndArtifactResponse" name="findCommentBySiteAndArtifactResponse">
+        </wsdl:part>
+    </wsdl:message>
+
+    <wsdl:portType name="Comment">
+        <wsdl:operation name="findCommentBySiteAndArtifact">
+            <wsdl:input message="tns:findCommentBySiteAndArtifactRequest" name="findCommentBySiteAndArtifactRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:findCommentBySiteAndArtifactResponse" name="findCommentBySiteAndArtifactResponse">
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name="CommentSoap11" type="tns:Comment">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+        <wsdl:operation name="findCommentBySiteAndArtifact">
+            <soap:operation soapAction=""/>
+            <wsdl:input name="findCommentBySiteAndArtifactRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="findCommentBySiteAndArtifactResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+
+    </wsdl:binding>
+    <wsdl:service name="CommentsService">
+        <wsdl:port binding="tns:CommentSoap11" name="CommentSoap11">
+            <soap:address location="http://localhost:1980/response.xml"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
