@@ -24,7 +24,16 @@
 
      <!-- enables scanning for @Transactional annotations -->
     <tx:annotation-driven />
- 
+
+    <bean class="org.springframework.samples.petclinic.repository.ws.RemoteCommentRepository">
+    </bean>
+
+    <bean class="fr.norsys.schemas.comment.CommentServicePortFactoryBean">
+        <property name="wsdlLocation" value="classpath:wsdl/service.wsdl"/>
+        <property name="endPointUrl" value="http://localhost:1980/response.xml"/>
+        <property name="connectionTimeout" value="1000" />
+        <property name="requestTimeout" value="1000" />
+    </bean>
 
     <beans profile="jpa,spring-data-jpa">
         <!-- JPA EntityManagerFactory -->

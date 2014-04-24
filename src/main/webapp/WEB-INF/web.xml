@@ -86,4 +86,13 @@ see here: http://static.springsource.org/spring/docs/current/spring-framework-re
         <servlet-name>petclinic</servlet-name>
     </filter-mapping>
 
+    <error-page>
+        <error-code>502</error-code><!-- Bad Gateway -->
+        <location>/WEB-INF/jsp/error.jsp</location>
+    </error-page>
+
+    <error-page>
+        <error-code>504</error-code><!-- Gateway Timeout -->
+        <location>/WEB-INF/jsp/error.jsp</location>
+    </error-page>
 </web-app>
